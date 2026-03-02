@@ -13,6 +13,9 @@ export default {
       },
     },
     extend: {
+      fontFamily: {
+        poppins: ["Poppins", "sans-serif"],
+      },
       gridTemplateColumns: {
         '39': 'repeat(39, minmax(0, 1fr))',
       },
@@ -61,7 +64,8 @@ export default {
           border: "hsl(var(--sidebar-border))",
           ring: "hsl(var(--sidebar-ring))",
         },
-
+        "orange-primary": "#DF6328",
+        "gray-primary": "#3B4142",
       },
       borderRadius: {
         lg: "var(--radius)",
@@ -94,6 +98,14 @@ export default {
       transitionProperty: {
         'smooth': 'var(--transition-smooth)',
         'slow': 'var(--transition-slow)',
+      },
+      fontSize: {
+        'InterHeader': ['2.5rem', { lineHeight: '1.2' }],
+        'InterDescription': ['1.35rem', { lineHeight: '1.4' }],
+        'PoppinsHeader': ['2.5rem', { lineHeight: '1.2' }],
+        'PoppinsDescription': ['1.35rem', { lineHeight: '1.4' }],
+        'textTitle': ['2.5rem', { lineHeight: '1.2' }],
+        'textDescription': ['1.35rem', { lineHeight: '1.4' }],
       },
     },
   },
