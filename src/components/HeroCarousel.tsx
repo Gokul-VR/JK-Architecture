@@ -42,7 +42,7 @@ const HeroCarousel = ({ carouselImages }: { carouselImages?: string[] }) => {
             {images.map((image, index) => (
               <CarouselItem key={index} className="pl-4 basis-[95%] md:pl-8 md:basis-[70%] lg:basis-[63%]">
                 <div
-                  className={`relative aspect-[16/9] w-full overflow-hidden shadow-2xl transition-all duration-500 ease-in-out ${index === current ? "scale-100" : "scale-90 opacity-40"
+                  className={`relative aspect-[1.77/1] w-full overflow-hidden shadow-2xl transition-all duration-500 ease-in-out ${index === current ? "scale-100" : "scale-90 opacity-40"
                     }`}
                 >
                   <img
@@ -61,14 +61,14 @@ const HeroCarousel = ({ carouselImages }: { carouselImages?: string[] }) => {
           </CarouselContent>
 
           {/* Carousel Dots */}
-          <div className="flex justify-center gap-2 mt-8">
+          <div className="flex justify-center gap-2 mt-6">
             {images.map((_, index) => (
               <button
                 key={index}
                 onClick={() => api?.scrollTo(index)}
-                className={`w-3 h-3 rounded-full transition-all duration-300 ${index === current
+                className={`w-5 h-5 rounded-full transition-all duration-300 ${index === current
                   ? "bg-[#ff4d00]" // Using the orange color from the design
-                  : "bg-white/20 hover:bg-white/40"
+                  : "bg-gray-primary hover:bg-gray-primary"
                   }`}
                 aria-label={`Go to slide ${index + 1}`}
               />

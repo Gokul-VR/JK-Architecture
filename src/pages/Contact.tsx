@@ -41,7 +41,7 @@ const Contact = () => {
                 <h1 className="text-white text-4xl md:text-5xl lg:text-6xl font-bold mb-4 leading-tight">
                   Find us here.
                 </h1>
-                <p className="text-orange-500 text-xl md:text-2xl font-light">
+                <p className="text-orange-primary text-xl md:text-2xl font-light">
                   9.9674, 76.2969
                 </p>
               </div>

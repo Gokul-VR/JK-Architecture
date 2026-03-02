@@ -2,7 +2,7 @@ import heroLarge from "@/assets/hero-large.jpg";
 
 const LargeImageSection = () => {
   return (
-    <section className="relative w-full h-[95vh] overflow-hidden">
+    <section className="relative w-full h-[100vh] overflow-hidden">
       <img
         src={heroLarge}
         alt="Luxury architecture resort in Kerala"

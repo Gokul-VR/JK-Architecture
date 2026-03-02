@@ -113,10 +113,10 @@ const Events = () => {
                   <div
                     key={i}
                     className={`w-full aspect-square rounded-full ${isActive
-                      ? "bg-orange-500"
+                      ? "bg-orange-primary"
                       : isHollow
-                        ? "bg-black border border-gray-500"
-                        : "bg-gray-600"
+                        ? "bg-black border border-gray-primary"
+                        : "bg-gray-primary"
                       }`}
                   />
                 );

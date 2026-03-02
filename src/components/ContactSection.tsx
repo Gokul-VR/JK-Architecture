@@ -10,28 +10,28 @@ const ContactSection = () => {
             <div className="">
               <h2 className="text-white text-2xl md:text-3xl font-[500] leading-tight mb-8 md:mb-12">
                 Find us{" "}
-                <span className="bg-orange-500 text-white px-[1rem] pb-0 md:pb-1 rounded-full font-[500] inline-block whitespace-nowrap">
-                  HERE
+                <span className="bg-orange-primary text-white px-[1rem] pb-0 md:pb-1 rounded-full font-[500] inline-block whitespace-nowrap">
+                  Contact Now
                 </span>{" "}
                 so we can start shaping your ideas into reality.
               </h2>
-              <div className="flex flex-col md:flex-row md:items-center md:gap-8 gap-2">
-                <div className="flex items-center gap-2">
-                  <div className="w-4 h-4 md:w-6 md:h-6 rounded-full bg-orange-500 flex-shrink-0" />
+              <div className="flex flex-col gap-4">
+                <div className="flex items-center gap-4">
+                  <div className="w-4 h-4 md:w-6 md:h-6 rounded-full bg-orange-primary flex-shrink-0" />
                   <a
-                    href="tel:+917907114319"
-                    className="text-white text-base md:text-[1.2rem] hover:text-orange-500 transition-colors"
+                    href="mailto:contact@greetmotion.com"
+                    className="text-white text-base md:text-[1.2rem] hover:text-orange-primary transition-colors"
                   >
-                    +91 7907114319
+                    contact@greetmotion.com
                   </a>
                 </div>
-                <div className="flex items-center gap-2">
-                  <div className="w-4 h-4 md:w-6 md:h-6 rounded-full bg-orange-500 flex-shrink-0" />
+                <div className="flex items-center gap-4">
+                  <div className="w-4 h-4 md:w-6 md:h-6 rounded-full bg-orange-primary flex-shrink-0" />
                   <a
-                    href="tel:+917907114319"
-                    className="text-white text-base md:text-[1.2rem] hover:text-orange-500 transition-colors"
+                    href="tel:+919876543210"
+                    className="text-white text-base md:text-[1.2rem] hover:text-orange-primary transition-colors"
                   >
-                    +91 7907114319
+                    +91 98765 43210
                   </a>
                 </div>
               </div>

@@ -48,7 +48,7 @@ const Media = () => {
                 className="group cursor-pointer animate-fade-in"
                 style={{ animationDelay: `${index * 50}ms` }}
               >
-                <div className="relative overflow-hidden mb-3 aspect-[2.9/3.9] bg-card ">
+                <div className="relative overflow-hidden mb-3 aspect-[1/1.3] bg-card ">
                   <img
                     src={pub.image}
                     alt={pub.name}
@@ -85,10 +85,10 @@ const Media = () => {
                 <div
                   key={i}
                   className={`w-full aspect-square rounded-full ${isActive
-                    ? "bg-orange-500"
+                    ? "bg-orange-primary"
                     : isHollow
-                      ? "bg-black border border-gray-500"
-                      : "bg-gray-600"
+                      ? "bg-black border border-gray-primary"
+                      : "bg-gray-primary"
                     }`}
                 />
               );

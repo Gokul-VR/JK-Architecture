@@ -1,7 +1,8 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Menu, X } from "lucide-react";
 import Logo from "@/assets/nav-logo.svg";
+import gsap from "gsap";
 
 const navLinks = [
   { path: "/process", label: "Process" },
@@ -9,19 +10,54 @@ const navLinks = [
   { path: "/about", label: "About us" },
   { path: "/events", label: "Events" },
   { path: "/media", label: "Media" },
+  { path: "/reviews", label: "Reviews" },
   { path: "/contact", label: "Contact Us" },
 ];
 
 const Navigation = () => {
-  const [scrolled, setScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const location = useLocation();
 
+  const navRef = useRef(null);
+  const lastScrollY = useRef(0);
+  const isHidden = useRef(false);
+
   useEffect(() => {
+    const nav = navRef.current;
+
     const handleScroll = () => {
-      setScrolled(window.scrollY > 50);
+      const currentScrollY = window.scrollY;
+
+      // Determine direction
+      const scrollingDown = currentScrollY > lastScrollY.current;
+      // Define a small buffer so it doesn't hide immediately at the very top
+      const scrollThreshold = 100;
+
+      if (scrollingDown && currentScrollY > scrollThreshold && !isHidden.current) {
+        // SCROLL DOWN: Hide
+        isHidden.current = true;
+        gsap.to(nav, {
+          yPercent: -100,
+          duration: 0.4,
+          ease: "power2.inOut",
+          overwrite: "auto"
+        });
+      } else if (!scrollingDown && isHidden.current) {
+        // SCROLL UP: Show
+        isHidden.current = false;
+        gsap.to(nav, {
+          yPercent: 0,
+          duration: 0.4,
+          ease: "power2.out",
+          overwrite: "auto"
+        });
+      }
+
+      lastScrollY.current = currentScrollY;
     };
-    window.addEventListener("scroll", handleScroll);
+
+    // 'passive: true' helps browser performance during scroll
+    window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
@@ -32,10 +68,11 @@ const Navigation = () => {
 
   return (
     <nav
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${scrolled ? "bg-background/95 backdrop-blur-sm" : "bg-transparent"
-        }`}
+      ref={navRef}
+      /* will-change-transform optimizes the GPU for the slide animation */
+      className="fixed top-0 left-0 right-0 z-50 bg-background/95 backdrop-blur-sm bwill-change-transform"
     >
-      <div className="container mx-auto px-6 py-3">
+      <div className="container mx-auto px-2 py-4">
         <div className="flex items-center justify-between">
           {/* Logo */}
           <Link
@@ -51,7 +88,7 @@ const Navigation = () => {
               <Link
                 key={link.path}
                 to={link.path}
-                className={`text-sm transition-colors ${location.pathname === link.path
+                className={`text-sm font-[500] transition-colors ${location.pathname === link.path
                   ? "text-primary"
                   : "text-foreground hover:text-primary"
                   }`}
@@ -63,7 +100,7 @@ const Navigation = () => {
 
           {/* Mobile Menu Button */}
           <button
-            className="md:hidden text-foreground"
+            className="md:hidden text-foreground p-2"
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
             aria-label="Toggle menu"
           >
@@ -71,15 +108,15 @@ const Navigation = () => {
           </button>
         </div>
 
-        {/* Mobile Menu */}
+        {/* Mobile Menu Content */}
         {mobileMenuOpen && (
-          <div className="md:hidden mt-4 pb-4 animate-fade-in">
+          <div className="md:hidden mt-4 pb-4 animate-in fade-in slide-in-from-top-4 duration-300">
             <div className="flex flex-col gap-4">
               {navLinks.map((link) => (
                 <Link
                   key={link.path}
                   to={link.path}
-                  className={`text-sm transition-colors ${location.pathname === link.path
+                  className={`text-base font-medium transition-colors ${location.pathname === link.path
                     ? "text-primary"
                     : "text-foreground hover:text-primary"
                     }`}

@@ -69,22 +69,22 @@ const ProcessSection = ({ startFrom = "right" }: ProcessSectionProps) => {
                       <div className="relative z-10 h-full flex flex-col justify-between">
                         <div>
                           <div className="inline-block relative md:translate-x-[13rem]">
-                            <h2 className="text-5xl md:text-7xl font-[500] tracking-wider text-foreground md:whitespace-nowrap relative pb-2 mt-8">
+                            <h2 className="text-5xl md:text-6xl font-[500] tracking-wider text-foreground md:whitespace-nowrap relative pb-2 mt-8">
                               {step.title}
                               <span className="h-1 bg-primary block w-full absolute bottom-0 left-0"></span>
                             </h2>
                           </div>
                         </div>
-                        <p className="text-gray-400 text-sm md:text-[1.3rem] leading-[1.3] max-w-md mt-6">
+                        <p className="text-[#FFFFFF] font-poppins font-[300] text-[18px] md:text-[1.7rem] leading-[100%] tracking-normal text-justify max-w-md">
                           {step.text}
                         </p>
                       </div>
                     ) : (
-                      <div className="flex flex-col gap-5">
+                      <div className="flex flex-col gap-3">
                         {processSteps.map((_, dotIndex) => (
                           <div
                             key={dotIndex}
-                            className={`w-6 h-6 rounded-full ${dotIndex <= index ? "bg-primary" : "bg-muted/30"
+                            className={`w-6 h-6 rounded-full ${dotIndex <= index ? "bg-orange-primary" : "bg-gray-primary"
                               }`}
                           />
                         ))}
@@ -94,7 +94,8 @@ const ProcessSection = ({ startFrom = "right" }: ProcessSectionProps) => {
 
                   {/* IMAGE */}
                   <div className="order-2 flex-1 w-full relative z-0">
-                    <div className="relative overflow-hidden w-full h-[400px] md:h-[500px]">
+
+                    <div className="relative overflow-hidden w-full max-w-[1107px] aspect-[1.5/1] mx-auto">
                       <img
                         src={step.image}
                         alt={step.title}
@@ -113,13 +114,13 @@ const ProcessSection = ({ startFrom = "right" }: ProcessSectionProps) => {
                       <div className="relative z-10 h-full flex flex-col justify-between items-end">
                         <div>
                           <div className="inline-block relative md:-translate-x-[13rem]">
-                            <h2 className="text-5xl md:text-7xl font-[500] tracking-wider text-foreground md:whitespace-nowrap relative pb-2 mt-8">
+                            <h2 className="text-5xl md:text-6xl font-[500] tracking-wider text-foreground md:whitespace-nowrap relative pb-2 mt-8">
                               {step.title}
                               <span className="h-1 bg-primary block w-full absolute bottom-0 left-0"></span>
                             </h2>
                           </div>
                         </div>
-                        <p className="text-gray-400 text-sm md:text-[1.3rem] leading-[1.3] max-w-md text-left mt-6">
+                        <p className="text-[#FFFFFF] font-poppins font-[300] text-[18px] md:text-[1.7rem] leading-[100%] tracking-normal text-justify max-w-md">
                           {step.text}
                         </p>
                       </div>
@@ -128,7 +129,7 @@ const ProcessSection = ({ startFrom = "right" }: ProcessSectionProps) => {
                         {processSteps.map((_, dotIndex) => (
                           <div
                             key={dotIndex}
-                            className={`w-6 h-6 rounded-full ${dotIndex <= index ? "bg-primary" : "bg-muted/30"
+                            className={`w-6 h-6 rounded-full ${dotIndex <= index ? "bg-primary" : "bg-gray-primary"
                               }`}
                           />
                         ))}
@@ -158,7 +159,7 @@ const ProcessSection = ({ startFrom = "right" }: ProcessSectionProps) => {
                   </div>
 
                   {/* Description */}
-                  <p className="text-gray-400 text-sm leading-relaxed">
+                  <p className="text-[#FFFFFF] font-poppins font-[300] text-[18px] md:text-[28px] leading-[100%] tracking-normal text-justify max-w-md">
                     {step.text}
                   </p>
 

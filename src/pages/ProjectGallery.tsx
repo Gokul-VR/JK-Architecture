@@ -190,7 +190,7 @@ const ProjectGallery = () => {
         <button
           onClick={handlePrev}
           className="absolute left-8 md:left-12 z-50 
-                     text-orange-500 hover:text-orange-400 transition-all duration-300 
+                     text-orange-primary hover:text-orange-primary/80 transition-all duration-300 
                      hover:scale-110 focus:outline-none group cursor-pointer"
           aria-label="Previous image"
         >
@@ -206,7 +206,7 @@ const ProjectGallery = () => {
         <button
           onClick={handleNext}
           className="absolute right-8 md:right-12 z-50 
-                     text-orange-500 hover:text-orange-400 transition-all duration-300 
+                     text-orange-primary hover:text-orange-primary/80 transition-all duration-300 
                      hover:scale-110 focus:outline-none group cursor-pointer"
           aria-label="Next image"
         >
