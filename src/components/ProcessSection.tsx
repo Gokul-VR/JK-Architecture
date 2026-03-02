@@ -75,7 +75,8 @@ const ProcessSection = ({ startFrom = "right" }: ProcessSectionProps) => {
                             </h2>
                           </div>
                         </div>
-                        <p className="text-[#FFFFFF] font-poppins font-[300] text-[18px] md:text-[1.7rem] leading-[100%] tracking-normal text-justify max-w-md">
+                        <p className="text-[#FFFFFF] font-poppins font-[300] text-[18px] md:text-PoppinsDescription leading-[100%] tracking-normal text-justify max-w-md"
+                        >
                           {step.text}
                         </p>
                       </div>
@@ -120,7 +121,8 @@ const ProcessSection = ({ startFrom = "right" }: ProcessSectionProps) => {
                             </h2>
                           </div>
                         </div>
-                        <p className="text-[#FFFFFF] font-poppins font-[300] text-[18px] md:text-[1.7rem] leading-[100%] tracking-normal text-justify max-w-md">
+                        <p className="text-[#FFFFFF] font-poppins font-[300] text-[18px] md:text-PoppinsDescription leading-[100%] tracking-normal text-justify max-w-md"
+                        >
                           {step.text}
                         </p>
                       </div>
@@ -159,7 +161,7 @@ const ProcessSection = ({ startFrom = "right" }: ProcessSectionProps) => {
                   </div>
 
                   {/* Description */}
-                  <p className="text-[#FFFFFF] font-poppins font-[300] text-[18px] md:text-[28px] leading-[100%] tracking-normal text-justify max-w-md">
+                  <p className="text-[#FFFFFF] font-poppins font-[300] text-[18px] md:text-[1.7rem] leading-[100%] tracking-normal text-justify max-w-md">
                     {step.text}
                   </p>
 
