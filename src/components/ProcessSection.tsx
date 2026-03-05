@@ -81,11 +81,11 @@ const ProcessSection = ({ startFrom = "right" }: ProcessSectionProps) => {
                         </p>
                       </div>
                     ) : (
-                      <div className="flex flex-col gap-3">
+                      <div className="flex flex-col gap-2.5">
                         {processSteps.map((_, dotIndex) => (
                           <div
                             key={dotIndex}
-                            className={`w-6 h-6 rounded-full ${dotIndex <= index ? "bg-orange-primary" : "bg-gray-primary"
+                            className={`w-7 h-7 rounded-full ${dotIndex <= index ? "bg-orange-primary" : "bg-gray-primary"
                               }`}
                           />
                         ))}
@@ -127,11 +127,11 @@ const ProcessSection = ({ startFrom = "right" }: ProcessSectionProps) => {
                         </p>
                       </div>
                     ) : (
-                      <div className="flex flex-col gap-5">
+                      <div className="flex flex-col gap-2.5">
                         {processSteps.map((_, dotIndex) => (
                           <div
                             key={dotIndex}
-                            className={`w-6 h-6 rounded-full ${dotIndex <= index ? "bg-primary" : "bg-gray-primary"
+                            className={`w-7 h-7 rounded-full ${dotIndex <= index ? "bg-primary" : "bg-gray-primary"
                               }`}
                           />
                         ))}

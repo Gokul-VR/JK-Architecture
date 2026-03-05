@@ -1,6 +1,8 @@
 import { Link, useNavigate } from "react-router-dom";
+import { useState } from "react";
 import Navigation from "@/components/Navigation";
 import ContactSection from "@/components/ContactSection";
+import SeeAllModal from "@/components/SeeAllModal";
 import project1 from "@/assets/project-1.jpg";
 import project2 from "@/assets/project-2.jpg";
 import project3 from "@/assets/project-3.jpg";
@@ -100,8 +102,11 @@ const DotPattern = () => (
   </div>
 );
 
+
+
 const Projects = () => {
   const navigate = useNavigate();
+  const [selectedCategory, setSelectedCategory] = useState<any>(null);
 
   return (
     <div className="min-h-screen bg-background">
@@ -149,7 +154,10 @@ const Projects = () => {
               {/* See All Link */}
               <div className="flex items-center justify-end mt-8 gap-4 ">
                 <div className="flex-grow h-[1px] bg-white "></div>
-                <button className="flex items-center gap-3 text-white hover:text-gray-300 transition-colors">
+                <button
+                  className="flex items-center gap-3 text-white hover:text-gray-300 transition-colors"
+                  onClick={() => setSelectedCategory(category)}
+                >
                   <span className="text-[1.2rem]">See all {category.title}</span>
                   <div className="w-8 h-8 rounded-full bg-orange-primary flex items-center justify-center" />
                 </button>
@@ -171,11 +179,11 @@ const Projects = () => {
                     return (
                       <div
                         key={i}
-                        className={`w-full aspect-square rounded-full ${isActive
+                        className={`w-[30px] h-[30px] aspect-square rounded-full  ${isActive
                           ? "bg-orange-primary"
                           : isHollow
-                            ? "bg-black border border-gray-primary"
-                            : "bg-gray-primary"
+                            ? "bg-transparent border-[2px] border-[#3B5747]"
+                            : "bg-gray-primary border-[2px] border-gray-primary"
                           }`}
                       />
                     );
@@ -189,6 +197,11 @@ const Projects = () => {
       </div>
 
       <ContactSection />
+
+      {/* Modal */}
+      {selectedCategory && (
+        <SeeAllModal category={selectedCategory} onClose={() => setSelectedCategory(null)} />
+      )}
     </div>
   );
 };

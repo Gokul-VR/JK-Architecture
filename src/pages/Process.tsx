@@ -54,7 +54,7 @@ const Process = () => {
       <section className="pt-[6rem] pb-8">
         <div className="px-1">
           {/* Process Cards Grid */}
-          <div className="grid grid-cols-2 md:grid-cols-5 gap-[1.5rem] md:gap-[5.8rem] mb-[1.5rem] px-5 md:px-[7rem]">
+          <div className="grid grid-cols-2 md:grid-cols-5 gap-[1.5rem] md:gap-[6.5rem] mb-[5.5vh] px-5 md:px-[7rem]">
             {processCards.map((card, index) => (
               <div
                 key={card.title}
@@ -85,12 +85,12 @@ const Process = () => {
             <h2 className="text-white text-3xl md:text-InterHeader font-medium mb-2">
               Weaving life among walls and voids
             </h2>
-            <p className="text-white text-InterDescription font-[300]">Jibu and Thomas Architects</p>
+            <p className="text-white font-poppins text-[1.75rem] font-[300]">Jibu and Thomas Architects</p>
           </div>
 
           {/* Dots Navigation */}
           <div className="flex justify-center py-12">
-            <div className="grid grid-cols-39 gap-[2px] md:gap-2 w-full px-10">
+            <div className="grid grid-cols-39 gap-[2px] md:gap-1.5 w-full px-10">
               {Array.from({ length: 117 }).map((_, i) => {
                 const row = Math.floor(i / 39);
                 const col = i % 39;
@@ -104,11 +104,11 @@ const Process = () => {
                 return (
                   <div
                     key={i}
-                    className={`w-full aspect-square rounded-full ${isActive
+                    className={`w-[32px] h-[32px] aspect-square rounded-full  ${isActive
                       ? "bg-orange-primary"
                       : isHollow
-                        ? "bg-black border border-gray-primary"
-                        : "bg-gray-primary"
+                        ? "bg-transparent border-[2px] border-[#3B5747]"
+                        : "bg-gray-primary border-[2px] border-gray-primary"
                       }`}
                   />
                 );

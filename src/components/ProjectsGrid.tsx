@@ -25,7 +25,6 @@ const ProjectsGrid = () => {
               className="group relative overflow-hidden cursor-pointer animate-fade-in max-w-sm mx-auto mt-[3rem]"
               style={{ animationDelay: `${index * 100}ms` }}
             >
-              {/* Smaller Images - Fixed Aspect */}
               <div className="aspect-[4/5] overflow-hidden  transition-all duration-300">
                 <img
                   src={project.image || "/placeholder.svg"}

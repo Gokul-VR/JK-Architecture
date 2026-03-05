@@ -21,8 +21,8 @@ const About = () => {
           <div className="grid md:grid-cols-2 gap-0 relative mb-[9rem]">
             {/* Left Side - Text */}
             <div className="text-white md:pr-8 z-10 md:-mt-2.5">
-              <p className="text-sm md:text-[1.65rem] font-[300] leading-[1.75] tracking-wider">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.  ncididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequa
+              <p className="text-sm md:text-[24px] font-poppins font-[300] leading-[1.4] tracking-normal text-justify">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.  ncididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequaLorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
               </p>
             </div>
 
@@ -64,8 +64,8 @@ const About = () => {
                 <h2 className="text-white text-3xl lg:text-4xl xl:text-5xl font-[500] mb-8 lg:mb-0">
                   Principal Architects
                 </h2>
-                <div className="text-white text-sm lg:text-[1.35rem] font-[300] leading-[2] max-w-[39rem]">
-                  <p>
+                <div className="max-w-[39rem]">
+                  <p className="text-justify text-white text-sm lg:text-PoppinsDescription font-poppins font-[300] leading-[3]">
                     Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
                     incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
                     exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. ncididunt ut
