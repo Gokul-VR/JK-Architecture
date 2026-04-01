@@ -1,13 +1,21 @@
 import officeBuilding from "@/assets/office-building.jpg";
 import Navigation from "@/components/Navigation";
-import { Facebook, Instagram, Linkedin, Youtube } from "lucide-react";
 import map from "../assets/map.png";
 
+import facebookIcon from "@/assets/icons/facebook.svg";
+import instagramIcon from "@/assets/icons/instagram.svg";
+import linkedinIcon from "@/assets/icons/linkedin.svg";
+import youtubeIcon from "@/assets/icons/youtube.svg";
+import behanceIcon from "@/assets/icons/behance.svg";
+import googlePlusIcon from "@/assets/icons/google-plus.svg";
+
 const socialLinks = [
-  { icon: Facebook, label: "Facebook" },
-  { icon: Instagram, label: "Instagram" },
-  { icon: Linkedin, label: "LinkedIn" },
-  { icon: Youtube, label: "YouTube" },
+  { icon: facebookIcon, label: "Facebook" },
+  { icon: instagramIcon, label: "Instagram" },
+  { icon: linkedinIcon, label: "LinkedIn" },
+  { icon: youtubeIcon, label: "YouTube" },
+  { icon: behanceIcon, label: "Behance" },
+  { icon: googlePlusIcon, label: "Google Plus" },
 ];
 
 const Contact = () => {
@@ -98,32 +106,20 @@ const Contact = () => {
         </div >
         {/* Social Links */}
         <div className="mt-12 md:mt-10 flex flex-wrap justify-center gap-2 lg:gap-[3rem]">
-          {socialLinks.map((social, index) => (
+          {socialLinks.map((social) => (
             <a
               key={social.label}
               href="#"
               className="w-20 h-20 md:w-28 md:h-28 lg:w-[12rem] lg:h-[12rem] rounded-full bg-primary flex items-center justify-center hover:scale-110 transition-transform duration-300 flex-shrink-0"
               aria-label={social.label}
             >
-              <social.icon className="w-10 h-10 md:w-14 md:h-14 lg:w-16 lg:h-16 text-foreground" />
+              <img
+                src={social.icon}
+                alt={social.label}
+                className="w-10 h-10 md:w-20 md:h-20 lg:w-[7rem] lg:h-[6rem]"
+              />
             </a>
           ))}
-          {/* Behance - custom icon */}
-          <a
-            href="#"
-            className="w-20 h-20 md:w-28 md:h-28 lg:w-[12rem] lg:h-[12rem] rounded-full bg-primary flex items-center justify-center hover:scale-110 transition-transform duration-300 flex-shrink-0"
-            aria-label="Behance"
-          >
-            <span className="text-foreground text-2xl md:text-3xl lg:text-6xl font-bold">Bē</span>
-          </a>
-          {/* Google+ */}
-          <a
-            href="#"
-            className="w-20 h-20 md:w-28 md:h-28 lg:w-[12rem] lg:h-[12rem] rounded-full bg-primary flex items-center justify-center hover:scale-110 transition-transform duration-300 flex-shrink-0"
-            aria-label="Google Plus"
-          >
-            <span className="text-foreground text-2xl md:text-3xl lg:text-6xl font-bold">G+</span>
-          </a>
         </div>
       </section >
     </div >

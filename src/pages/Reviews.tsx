@@ -3,8 +3,9 @@ import Navigation from "@/components/Navigation";
 import ContactSection from "@/components/ContactSection";
 import testimonial1 from "@/assets/testimonial-1.jpg";
 import testimonial2 from "@/assets/testimonial-2.jpg";
+import CircleIndicator from "@/components/indicators/circleIndicator";
 
-const clientLogos = Array(8).fill(null);
+const clientLogos = Array(14).fill(null);
 
 const testimonials = [
   {
@@ -36,15 +37,15 @@ const Reviews = () => {
   return (
     <div className="min-h-screen bg-background">
       <Navigation />
-      
-      <section className="pt-32 pb-20">
+
+      <section className="pt-28 pb-20">
         <div className="container mx-auto px-6">
           {/* Client Portfolio Section */}
           <div className="text-center mb-16 animate-fade-in">
-            <h1 className="text-foreground text-3xl md:text-4xl font-bold mb-4">
+            <h1 className="text-foreground text-3xl md:text-InterHeader font-bold mb-8">
               Client Portfolio
             </h1>
-            <p className="text-muted-foreground text-sm max-w-2xl mx-auto">
+            <p className="text-PoppinsDescription max-w-4xl font-[300] mx-auto text-justify">
               Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
               incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
               exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat
@@ -52,82 +53,119 @@ const Reviews = () => {
           </div>
 
           {/* Client Logos Grid */}
-          <div className="grid grid-cols-4 md:grid-cols-8 gap-4 mb-8 animate-fade-in" style={{ animationDelay: "100ms" }}>
-            {clientLogos.map((_, index) => (
-              <div
-                key={index}
-                className="aspect-square bg-card border border-border flex items-center justify-center"
-              >
-                <div className="w-12 h-12 bg-muted rounded" />
-              </div>
-            ))}
-          </div>
+          {(() => {
+            const rows = [];
+            const maxPerRow = 6;
 
-          {/* Dots Navigation */}
-          <div className="flex justify-center gap-2 mb-20">
-            {Array.from({ length: 20 }).map((_, i) => (
-              <div
-                key={i}
-                className={`w-3 h-3 rounded-full ${
-                  i === 9 || i === 10 ? "bg-primary" : "bg-muted"
-                }`}
-              />
-            ))}
-          </div>
+            for (let i = 0; i < clientLogos.length; i += maxPerRow) {
+              rows.push(clientLogos.slice(i, i + maxPerRow));
+            }
 
-          {/* Testament of Trust Section */}
-          <div className="mb-20 animate-fade-in" style={{ animationDelay: "200ms" }}>
-            <h2 className="text-foreground text-3xl md:text-4xl font-bold text-center mb-4">
-              Testament of Trust
-            </h2>
-            <p className="text-muted-foreground text-sm text-center max-w-2xl mx-auto mb-12">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-              incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
-              exercitation ullamco laboris nisi ut aliquip.
-            </p>
-
-            {/* Testimonials */}
-            <div className="space-y-12">
-              {testimonials.map((testimonial, index) => (
-                <div
-                  key={testimonial.id}
-                  className={`grid md:grid-cols-2 gap-8 items-center py-8 border-t border-border animate-fade-in ${
-                    index % 2 === 1 ? "md:flex-row-reverse" : ""
-                  }`}
-                  style={{ animationDelay: `${(index + 1) * 100}ms` }}
-                >
-                  <div className={index % 2 === 1 ? "md:order-2" : ""}>
-                    <p className="text-foreground text-sm leading-relaxed mb-6">
-                      "{testimonial.text}"
-                    </p>
-                    <div className="text-right">
-                      <p className="text-muted-foreground text-sm">{testimonial.company}</p>
-                      <p className="text-foreground font-medium">{testimonial.name}</p>
-                    </div>
+            return (
+              <div className="flex flex-col gap-10 mb-8 animate-fade-in items-center" style={{ animationDelay: "100ms" }}>
+                {rows.map((row, rowIndex) => (
+                  <div key={rowIndex} className="flex justify-center gap-10">
+                    {row.map((_, index) => (
+                      <div
+                        key={index}
+                        className="w-[200px] aspect-[4/4] bg-card border border-border flex items-center justify-center flex-shrink-0"
+                      >
+                      </div>
+                    ))}
                   </div>
-                  <div className={`flex ${index % 2 === 1 ? "md:order-1 justify-start" : "justify-end"}`}>
+                ))}
+              </div>
+            );
+          })()}
+
+
+        </div>
+        <div className="flex justify-center my-20">
+          <div className="grid grid-cols-39 gap-[2px] md:gap-2 w-full max-w-[90.5rem]">
+            {Array.from({ length: 117 }).map((_, i) => {
+              const row = Math.floor(i / 39);
+              const col = i % 39;
+
+              const isActive = row === 1 && col === 19;
+              const isHollow =
+                row >= 0 && row <= 2 &&
+                col >= 18 && col <= 20 &&
+                !isActive;
+
+              return (
+                <div
+                  key={i}
+                  className={`w-[30px] h-[30px] aspect-square rounded-full  ${isActive
+                    ? "bg-orange-primary"
+                    : isHollow
+                      ? "bg-transparent border-[2px] border-[#3B5747]"
+                      : "bg-gray-primary border-[2px] border-gray-primary"
+                    }`}
+                />
+              );
+            })}
+          </div>
+        </div>
+
+        {/* Testament of Trust Section */}
+        <div className="mb-20 animate-fade-in" style={{ animationDelay: "200ms" }}>
+          <h2 className="text-foreground text-3xl md:text-InterHeader font-bold text-center mb-8">
+            Testament of Trust
+          </h2>
+          <p className="text-PoppinsDescription font-[300] text-justify max-w-4xl mx-auto mb-12">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+            incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
+            exercitation ullamco laboris nisi ut aliquip.
+          </p>
+
+          {/* Testimonials */}
+          <div className="space-y-8 px-[4rem]">
+            {testimonials.map((testimonial, index) => (
+              <div
+                key={testimonial.id}
+                className="relative bg-[#222222]  flex items-stretch min-h-[250px] animate-fade-in overflow-hidden"
+                style={{ animationDelay: `${(index + 1) * 100}ms` }}
+              >
+                {/* Text Content */}
+                <div className="flex flex-col pb-6 pl-10 pr-8 pt-6 lg:pb-5 lg:pl-10 lg:pr-14 lg:pt-5 flex-1">
+                  <div className="flex-1 flex flex-col justify-center">
+                    <p className="text-PoppinsDescription font-poppins font-[300] leading-relaxed text-justify">
+                      “{testimonial.text}”
+                    </p>
+                  </div>
+                  <div className="text-right mt-10">
+                    <p className="font-poppins lg:text-[1.6rem] font-[300]">{testimonial.company}</p>
+                    <p className="text-white font-poppins font-semibold text-2xl lg:text-PoppinsHeader mt-1">{testimonial.name}</p>
+                  </div>
+                </div>
+
+                {/* Portrait Image Container */}
+                <div className="w-[260px] lg:w-[250px] h-[400px] flex-shrink-0 self-stretch py-6 pr-6 lg:py-5 lg:pr-5 flex flex-col">
+                  <div className="w-full flex-1 relative bg-[#222222]">
                     <img
                       src={testimonial.image}
                       alt={testimonial.name}
-                      className="w-40 h-40 object-cover grayscale rounded"
+                      className="absolute inset-0 w-full h-full object-cover object-top grayscale"
+                    />
+                    {/* Bottom gradient fade */}
+                    <div
+                      className="absolute inset-x-0 bottom-0 h-1/2 pointer-events-none"
+                      style={{ background: 'linear-gradient(180deg, rgba(217, 217, 217, 0) 8.49%, #000000 100%)' }}
                     />
                   </div>
                 </div>
-              ))}
-            </div>
-          </div>
-
-          {/* Bottom Dots Navigation */}
-          <div className="flex justify-center gap-2 mb-8">
-            {Array.from({ length: 20 }).map((_, i) => (
-              <div
-                key={i}
-                className={`w-3 h-3 rounded-full ${
-                  i >= 17 ? "bg-primary" : "bg-muted"
-                }`}
-              />
+              </div>
             ))}
           </div>
+        </div>
+
+        <div className="px-6 md:px-6 mt-10 -mb-[40px]">
+          <CircleIndicator
+            filledIndices={[32, 34]}
+            circleSize={32}
+            gap={8}
+            containerClassName="w-full flex justify-center items-center"
+          />
         </div>
       </section>
 

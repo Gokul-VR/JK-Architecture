@@ -6,6 +6,8 @@ import ContactSection from "@/components/ContactSection";
 import Marquee from "@/components/Marquee";
 import Navigation from "@/components/Navigation";
 import { Link } from "react-router-dom";
+import { useState } from "react";
+import ItemModal, { ItemData } from "@/components/ItemModal";
 
 const awards = [
   { id: 1, title: "Gold Medal", event: "Event Name, Location", image: award1 },
@@ -16,28 +18,28 @@ const awards = [
 ];
 
 const awardsList = [
-  { id: 1, image: award1, name: "Gold Medal", event: "Event Name, Location", colSpan: "md:col-span-1", aspect: "aspect-[5.4/7.2]" },
-  { id: 2, image: award2, name: "Top 3", event: "IIA Kottayode 2025", colSpan: "md:col-span-2", aspect: "aspect-[3/1.942]" },
-  { id: 3, image: award1, name: "Gold Medal", event: "Event Name, Location", colSpan: "md:col-span-1", aspect: "aspect-[5.4/7.2]" },
-  { id: 4, image: award2, name: "Top 3", event: "IIA Thrissur 2025", colSpan: "md:col-span-1", aspect: "aspect-[5.4/7.2]" },
-  { id: 5, image: award1, name: "Top 5", event: "IIA Malapuram 2025", colSpan: "md:col-span-1", aspect: "aspect-[5.4/7.2]" },
+  { id: 1, image: award1, name: "Gold Medal", event: "Event Name, Location", colSpan: "md:col-span-1", aspect: "aspect-[1/1.3]" },
+  { id: 2, image: award2, name: "Top 3", event: "IIA Kottayode 2025", colSpan: "md:col-span-2", aspect: "aspect-[1.585/1]" },
+  { id: 3, image: award1, name: "Gold Medal", event: "Event Name, Location", colSpan: "md:col-span-1", aspect: "aspect-[1/1.3]" },
+  { id: 4, image: award2, name: "Top 3", event: "IIA Thrissur 2025", colSpan: "md:col-span-1", aspect: "aspect-[1/1.3]" },
+  { id: 5, image: award1, name: "Top 5", event: "IIA Malapuram 2025", colSpan: "md:col-span-1", aspect: "aspect-[1/1.3]" },
 ]
 const awardNames = ["Award Name", "Award Name", "Award Name", "Award Name", "Award Name", "Award Name"];
 
 const openForumEvents = [
-  { id: 1, date: "Sept '25", event: "Open forum: N134", image: award3, colSpan: "md:col-span-1", aspect: "aspect-[5.4/7.2]" },
-  { id: 2, date: "Aug '25", event: "Open forum: 2033", image: award2, colSpan: "md:col-span-1", aspect: "aspect-[5.4/7.2]" },
-  { id: 3, date: "July '25", event: "Open forum: N133", image: award3, colSpan: "md:col-span-1", aspect: "aspect-[5.4/7.2]" },
-  { id: 4, date: "June '25", event: "Open forum: N131", image: award1, badge: "Jama Award List", colSpan: "md:col-span-1", aspect: "aspect-[5.4/7.2]" },
-  { id: 5, date: "May '25", event: "Open forum: 2130", image: award2, colSpan: "md:col-span-2", aspect: "aspect-[3/1.942]" },
-  { id: 6, date: "April '25", event: "Open forum: #129", image: award2, badge: "Jama Award List", colSpan: "md:col-span-2", aspect: "aspect-[3/1.942]" },
-  { id: 7, date: "March '25", event: "Open forum: #28", image: award1, colSpan: "md:col-span-1", aspect: "aspect-[5.4/7.2]" },
-  { id: 8, date: "Feb '25", event: "Open forum: #127", image: award3, colSpan: "md:col-span-1", aspect: "aspect-[5.4/7.2]" },
-  { id: 9, date: "Jan '25", event: "Open forum: #126", image: award3, colSpan: "md:col-span-1", aspect: "aspect-[5.4/7.2]" },
-  { id: 10, date: "Dec '24", event: "Open forum: #125", image: award3, colSpan: "md:col-span-1", aspect: "aspect-[5.4/7.2]" },
-  { id: 11, date: "Nov '24", event: "Open forum: #124", image: award2, colSpan: "md:col-span-1", aspect: "aspect-[5.4/7.2]" },
-  { id: 12, date: "Oct '24", event: "Open forum: #123", image: award2, colSpan: "md:col-span-1", aspect: "aspect-[5.4/7.2]" },
-  { id: 13, date: "Sept '24", event: "Open forum: #122", image: award2, colSpan: "md:col-span-1", aspect: "aspect-[5.4/7.2]" },
+  { id: 1, date: "Sept '25", event: "Open forum: #134", image: award3, colSpan: "md:col-span-1", aspect: "aspect-[1/1.3]" },
+  { id: 2, date: "Aug '25", event: "Open forum: #133", image: award2, colSpan: "md:col-span-1", aspect: "aspect-[1/1.3]" },
+  { id: 3, date: "July '25", event: "Open forum: #132", image: award3, colSpan: "md:col-span-1", aspect: "aspect-[1/1.3]" },
+  { id: 4, date: "June '25", event: "Open forum: #131", image: award1, badge: "Jama Award List", colSpan: "md:col-span-1", aspect: "aspect-[1/1.3]" },
+  { id: 5, date: "May '25", event: "Open forum: #130", image: award2, colSpan: "md:col-span-2", aspect: "aspect-[1.585/1]" },
+  { id: 6, date: "April '25", event: "Open forum: #129", image: award2, badge: "Jama Award List", colSpan: "md:col-span-2", aspect: "aspect-[1.585/1]" },
+  { id: 7, date: "March '25", event: "Open forum: #128", image: award1, colSpan: "md:col-span-1", aspect: "aspect-[1/1.3]" },
+  { id: 8, date: "Feb '25", event: "Open forum: #127", image: award3, colSpan: "md:col-span-1", aspect: "aspect-[1/1.3]" },
+  { id: 9, date: "Jan '25", event: "Open forum: #126", image: award3, colSpan: "md:col-span-1", aspect: "aspect-[1/1.3]" },
+  { id: 10, date: "Dec '24", event: "Open forum: #125", image: award3, colSpan: "md:col-span-1", aspect: "aspect-[1/1.3]" },
+  { id: 11, date: "Nov '24", event: "Open forum: #124", image: award2, colSpan: "md:col-span-1", aspect: "aspect-[1/1.3]" },
+  { id: 12, date: "Oct '24", event: "Open forum: #123", image: award2, colSpan: "md:col-span-1", aspect: "aspect-[1/1.3]" },
+  { id: 13, date: "Sept '24", event: "Open forum: #122", image: award2, colSpan: "md:col-span-1", aspect: "aspect-[1/1.3]" },
 ];
 
 const DotPattern = () => (
@@ -49,6 +51,14 @@ const DotPattern = () => (
 );
 
 const Events = () => {
+  const [selectedEvent, setSelectedEvent] = useState<ItemData | null>(null);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const handleOpenModal = (eventData: ItemData) => {
+    setSelectedEvent(eventData);
+    setIsModalOpen(true);
+  };
+
   return (
     <div className="min-h-screen bg-background">
       <Navigation />
@@ -56,7 +66,7 @@ const Events = () => {
       {/* Hero Award Section */}
       <section className="pt-20 pb-10">
         <div className="container mx-auto">
-          <div className="relative h-[550px] mb-4 overflow-hidden animate-fade-in md:px-[3rem]">
+          <div className="relative h-[540px] mb-4 overflow-hidden animate-fade-in md:px-[3rem]">
             <img
               src={MediaHero}
               alt="Jibu and Thomas Architects Award"
@@ -66,11 +76,11 @@ const Events = () => {
 
           </div>
           <div className="text-center mb-[3rem]">
-            <p className="text-white text-[1.25rem] md:text-[1.875rem] font-[300]">
+            <p className="text-white text-[1.25rem] font-poppins md:text-[1.9rem] font-[300]">
               Jibu and Thomas Architects bags X awards at IIA Abc
             </p>
           </div>
-          <div className={`grid grid-cols-1 md:grid-cols-3 gap-6 mb-20 md:px-[3rem]`}>
+          <div className={`grid grid-cols-1 md:grid-cols-3 gap-6 mb-20 md:px-[6rem]`}>
             {awardsList?.map((item, index) => (
               <div key={item.id} className={`group relative overflow-hidden cursor-pointer animate-fade-in mx-auto mt-[1rem] w-full ${item.colSpan || ''}`}
                 style={{ animationDelay: `${index * 100}ms` }}>
@@ -93,7 +103,7 @@ const Events = () => {
 
         {/* Awards Marquee Full Width */}
         <div className="w-full -mx-[calc((100vw-100%)/2)] mb-14 mt-10">
-          <Marquee items={awards} />
+          <Marquee items={awards} textVariant="left" />
         </div>
         <div className="container mx-auto">
 
@@ -130,11 +140,15 @@ const Events = () => {
               Open Forum
             </h2>
 
-            <div className={`grid grid-cols-1 md:grid-cols-3 gap-6 md:px-[3rem]`}>
+            <div className={`grid grid-cols-1 md:grid-cols-3 gap-6 md:px-[6rem]`}>
               {openForumEvents.map((event, index) => (
-                <Link
+                <div
                   key={index}
-                  to={`/events/forum-${index}`}
+                  onClick={() => handleOpenModal({
+                    image: event.image,
+                    title: event.event,
+                    date: event.date
+                  })}
                   className={`group relative overflow-hidden cursor-pointer animate-fade-in mx-auto mt-[1rem] w-full ${event.colSpan || ''}`}
                   style={{ animationDelay: `${index * 50}ms` }}
                 >
@@ -152,9 +166,9 @@ const Events = () => {
                       </div>
                     )}
                   </div>
-                  <h3 className="text-[1.25rem] md:text-[1.875rem] font-semibold mb-1 mt-2">{event.date}</h3>
-                  <p className="text-[1rem] md:text-[1.25rem] font-[300]">{event.event}</p>
-                </Link>
+                  <h3 className="text-[1.25rem] md:text-[1.875rem] font-[500]">{event.date}</h3>
+                  <p className="text-[1rem] md:text-[1.25rem] font-poppins font-[300] mt-[-.2rem]">{event.event}</p>
+                </div>
               ))}
             </div>
           </div>
@@ -162,6 +176,12 @@ const Events = () => {
       </section >
 
       <ContactSection />
+
+      <ItemModal
+        isOpen={isModalOpen}
+        onClose={() => setIsModalOpen(false)}
+        item={selectedEvent}
+      />
     </div >
   );
 };

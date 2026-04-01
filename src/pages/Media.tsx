@@ -6,6 +6,8 @@ import project2 from "@/assets/project-2.jpg";
 import project3 from "@/assets/project-3.jpg";
 import Media1 from "@/assets/media-1.png";
 import Marquee from "@/components/Marquee";
+import { useState } from "react";
+import ItemModal, { ItemData } from "@/components/ItemModal";
 
 const publications = [
   { id: 1, image: Media1, name: "Publication Name", year: "YEAR" },
@@ -33,22 +35,34 @@ const DotPattern = () => (
 );
 
 const Media = () => {
+  const [selectedPublication, setSelectedPublication] = useState<ItemData | null>(null);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const handleOpenModal = (pubData: ItemData) => {
+    setSelectedPublication(pubData);
+    setIsModalOpen(true);
+  };
+
   return (
     <div className="min-h-screen bg-background">
       <Navigation />
 
       {/* Publications Grid */}
-      <section className="pt-24 pb-10 ">
+      <section className="pt-[5.2rem] pb-10 ">
         <div className="">
-          <div className="grid grid-cols-2 md:grid-cols-3 gap-5 md:gap-[3rem] mb-16 animate-fade-in px-[1.75rem] md:px-[8.5rem]">
+          <div className="grid grid-cols-2 md:grid-cols-3 gap-5 md:gap-[3.5rem] mb-16 animate-fade-in px-[1.75rem] md:px-[11rem]">
             {publications.map((pub, index) => (
-              <Link
+              <div
                 key={pub.id}
-                to={`/media/${pub.id}`}
+                onClick={() => handleOpenModal({
+                  image: pub.image,
+                  title: pub.name,
+                  date: pub.year
+                })}
                 className="group cursor-pointer animate-fade-in"
                 style={{ animationDelay: `${index * 50}ms` }}
               >
-                <div className="relative overflow-hidden mb-3 aspect-[1/1.3] bg-card ">
+                <div className="relative overflow-hidden mb-3 aspect-[1/1.5] bg-card ">
                   <img
                     src={pub.image}
                     alt={pub.name}
@@ -57,7 +71,7 @@ const Media = () => {
                 </div>
                 <h3 className="text-foreground text-[1rem] md:text-[1.65rem] font-medium -mb-1.5">{pub.name}</h3>
                 <p className="text-muted-foreground text-[.875rem] md:text-[1.25rem]">{pub.year}</p>
-              </Link>
+              </div>
             ))}
           </div>
           {/* Publications Carousel */}
@@ -98,6 +112,12 @@ const Media = () => {
       </section>
 
       <ContactSection />
+
+      <ItemModal
+        isOpen={isModalOpen}
+        onClose={() => setIsModalOpen(false)}
+        item={selectedPublication}
+      />
     </div>
   );
 };

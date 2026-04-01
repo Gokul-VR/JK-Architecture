@@ -38,12 +38,20 @@ const Process = () => {
       delay: 0.2,         // slight delay after page load
     });
 
-    gsap.from(".tagline-section", {
+    gsap.from(".tagline-section h2", {
       opacity: 0,
       y: 20,
       duration: 1,
       ease: "power2.out",
       delay: 0.8,
+    });
+
+    gsap.from(".tagline-section p", {
+      opacity: 0,
+      y: 20,
+      duration: 1.2,
+      ease: "power2.out",
+      delay: 1.2,
     });
   }, []);
   return (

@@ -123,7 +123,7 @@ const SecondaryLanding = () => {
                   >
                     <span
                       ref={isActive ? activeRef : null}
-                      className={`text-xl sm:text-3xl md:text-5xl font-medium tracking-wide block transition-colors duration-300 ${isActive ? "text-white" : "text-[#444444]"
+                      className={`text-xl sm:text-3xl md:text-5xl font-medium tracking-wide block transition-colors duration-300 ${isActive ? "text-white" : "text-[#a1a1a1]"
                         }`}
                     >
                       {statement.text}
@@ -136,8 +136,8 @@ const SecondaryLanding = () => {
         </div>
 
         {/* Footer Text - Responsive sizing */}
-        <div className="absolute bottom-6 md:bottom-10 left-0 right-0 text-center px-4">
-          <p className="text-[14px] sm:text-[24px] md:text-[36px] uppercase tracking-[0.2em] md:tracking-[0.3em] text-white opacity-90 leading-tight">
+        <div className="absolute bottom-6 md:bottom-4 left-0 right-0 text-center px-4">
+          <p className="font-poppins text-[14px] sm:text-[24px] md:text-[34px] tracking-[0.05em] text-white font-light">
             Jibu and Thomas Architects
           </p>
         </div>

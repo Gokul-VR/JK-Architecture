@@ -1,4 +1,7 @@
+import React, { useEffect, useRef } from "react";
 import Navigation from "@/components/Navigation";
+import gsap from "gsap";
+import { SplitText } from "gsap/SplitText";
 import teamPhoto from "@/assets/about-1.jpg";
 import teamPhoto2 from "@/assets/team.png";
 import architect1 from "@/assets/architect-1.jpg";
@@ -11,6 +14,39 @@ const teamMembers = Array(10).fill({
 });
 
 const About = () => {
+  const textRef = useRef<HTMLParagraphElement>(null);
+  const headingRef = useRef<HTMLHeadingElement>(null);
+
+  useEffect(() => {
+    gsap.registerPlugin(SplitText);
+    if (!textRef.current || !headingRef.current) return;
+
+    const split = new SplitText(textRef.current, { type: "lines" });
+    const splitHeading = new SplitText(headingRef.current, { type: "words,chars" });
+
+    const tl = gsap.timeline();
+
+    tl.from(split.lines, {
+      y: 50,
+      opacity: 0,
+      duration: 1,
+      stagger: 0.1,
+      ease: "power3.out"
+    }, 0)
+    .from(splitHeading.words, {
+      y: 50,
+      opacity: 0,
+      duration: 1,
+      stagger: 0.05,
+      ease: "power3.out"
+    }, 0);
+
+    return () => {
+      split.revert();
+      splitHeading.revert();
+    };
+  }, []);
+
   return (
     <div className="min-h-screen bg-background">
       <Navigation />
@@ -21,7 +57,7 @@ const About = () => {
           <div className="grid md:grid-cols-2 gap-0 relative mb-[9rem]">
             {/* Left Side - Text */}
             <div className="text-white md:pr-8 z-10 md:-mt-2.5">
-              <p className="text-sm md:text-[24px] font-poppins font-[300] leading-[1.4] tracking-normal text-justify">
+              <p ref={textRef} className="text-sm md:text-[24px] font-poppins font-[300] leading-[1.4] tracking-normal text-justify">
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.  ncididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequaLorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
               </p>
             </div>
@@ -37,7 +73,7 @@ const About = () => {
 
             {/* Centered Heading - Overlays Both Sections */}
             <div className="absolute top-[25rem] left-0 right-0 bottom-0 flex items-center justify-center z-20 pointer-events-none">
-              <h1 className="text-white text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-[500] text-center px-6 tracking-wide">
+              <h1 ref={headingRef} className="text-white text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-[500] text-center px-6 tracking-wide">
                 WE ARE JIBU AND THOMAS
               </h1>
             </div>
@@ -59,13 +95,13 @@ const About = () => {
 
           {/* Principal Architects */}
           <div className="mb-20 animate-fade-in" style={{ animationDelay: "300ms" }}>
-            <div className="hidden lg:grid lg:grid-cols-4 lg:gap-4 lg:mb-[4.5rem]">
+            <div className="hidden lg:grid lg:grid-cols-4 lg:gap-8 lg:mb-[4.5rem]">
               <div className="flex flex-col col-span-2 justify-between lg:min-h-[500px]">
                 <h2 className="text-white text-3xl lg:text-4xl xl:text-5xl font-[500] mb-8 lg:mb-0">
                   Principal Architects
                 </h2>
                 <div className="max-w-[39rem]">
-                  <p className="text-justify text-white text-sm lg:text-PoppinsDescription font-poppins font-[300] leading-[3]">
+                  <p className="text-justify text-white text-sm md:text-[1.35rem] font-poppins font-[300] leading-[1.65]">
                     Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
                     incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
                     exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. ncididunt ut
@@ -89,8 +125,8 @@ const About = () => {
                   }}
                 />
                 <div className="absolute bottom-3 left-3 right-0 text-white">
-                  <p className="text-xs md:text-[1.35rem] font-[300] mb-2">Position</p>
-                  <p className="text-sm md:text-[1.25rem] font-[400]">Ar. Jibu John</p>
+                  <p className="text-xs md:text-[1.35rem] font-[300] font-poppins mb-2">Position</p>
+                  <p className="text-sm md:text-[1.25rem] font-[500] font-poppins">Ar. Jibu John</p>
                 </div>
               </div>
 
@@ -108,8 +144,8 @@ const About = () => {
                   }}
                 />
                 <div className="absolute bottom-3 left-3 right-0 text-white">
-                  <p className="text-xs md:text-[1.35rem] font-[300] mb-2">Position</p>
-                  <p className="text-sm md:text-[1.25rem] font-[400]">Ar. Jibu John</p>
+                  <p className="text-xs md:text-[1.25rem] font-[300] font-poppins mb-2">Position</p>
+                  <p className="text-sm md:text-[1.35rem] font-[500] font-poppins">Ar. Jibu John</p>
                 </div>
               </div>
             </div>
@@ -120,7 +156,7 @@ const About = () => {
                 <h2 className="text-white text-3xl md:text-4xl font-[500] mb-6 md:mb-8">
                   Principal Architects
                 </h2>
-                <div className="text-white text-sm md:text-base leading-relaxed max-w-2xl">
+                <div className="text-white text-sm md:text-base leading-loose max-w-2xl">
                   <p>
                     Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
                     incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
@@ -145,8 +181,8 @@ const About = () => {
                   }}
                 />
                 <div className="absolute bottom-5 left-3 right-0 text-white">
-                  <p className="text-[1.35rem] font-[300] mb-.5">Position</p>
-                  <p className="text-[1.25rem] font-[400]">Ar. Jibu John</p>
+                  <p className="text-[1.25rem] font-[300] mb-.5">Position</p>
+                  <p className="text-[1.35rem] font-[400]">Ar. Jibu John</p>
                 </div>
               </div>
 
@@ -194,8 +230,8 @@ const About = () => {
 
                   {/* Position and Name Text */}
                   <div className="absolute bottom-0 left-0 right-0 p-4 text-white">
-                    <p className="text-[1rem] md:text-[1.35rem] font-[300] md:mb-2">{member.position}</p>
-                    <p className="text-[.875rem] font-[400]">{member.name}</p>
+                    <p className="text-[1.25rem] md:text-[1.35rem] font-[300] font-poppins">{member.position}</p>
+                    <p className="text-[1.35rem] md: md:text-[1.25rem]font-[500] font-poppins">{member.name}</p>
                   </div>
                 </div>
               ))}

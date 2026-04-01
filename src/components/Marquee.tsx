@@ -18,9 +18,12 @@ interface MarqueeProps {
     items: Item[];
     baseSpeed?: number;
     scrollContainerRef?: React.RefObject<HTMLElement>;
+    /** "center" = current style (centered title + event below)
+     *  "left"   = big bold title top-left, small subtitle bottom-left */
+    textVariant?: "center" | "left";
 }
 
-const Marquee = ({ items, baseSpeed = 50, scrollContainerRef }: MarqueeProps) => {
+const Marquee = ({ items, baseSpeed = 50, scrollContainerRef, textVariant = "center" }: MarqueeProps) => {
     const containerRef = useRef<HTMLDivElement>(null);
     const animationRef = useRef<gsap.core.Tween | null>(null);
 
@@ -32,7 +35,6 @@ const Marquee = ({ items, baseSpeed = 50, scrollContainerRef }: MarqueeProps) =>
         if (!content) return;
 
         const ctx = gsap.context(() => {
-            // Create the infinite marquee animation
             const animation = gsap.to(content, {
                 xPercent: -50,
                 duration: baseSpeed,
@@ -44,7 +46,6 @@ const Marquee = ({ items, baseSpeed = 50, scrollContainerRef }: MarqueeProps) =>
 
             let timeoutId: NodeJS.Timeout;
 
-            // ScrollTrigger for velocity-based effects
             ScrollTrigger.create({
                 trigger: document.body,
                 scroller: scrollContainerRef?.current || window,
@@ -88,7 +89,7 @@ const Marquee = ({ items, baseSpeed = 50, scrollContainerRef }: MarqueeProps) =>
             ref={containerRef}
             className="w-full relative overflow-hidden bg-black py-10"
         >
-            <div className="marquee-content flex gap-4 w-max px-4">
+            <div className="marquee-content flex gap-8 w-max px-4">
                 {displayItems.map((item, index) => (
                     <div
                         key={`${item.id}-${index}`}
@@ -99,15 +100,33 @@ const Marquee = ({ items, baseSpeed = 50, scrollContainerRef }: MarqueeProps) =>
                             alt={item.title}
                             className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
                         />
-                        {/* <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent opacity-80 group-hover:opacity-100 transition-opacity duration-500" /> */}
-                        <div className="absolute -bottom-2 left-0 w-full p-6 text-center transform transition-transform duration-500 group-hover:translate-y-0">
-                            <h3 className="text-white text-xl font-[300] mb-1">{item.title}</h3>
-                            {item.event && <p className="text-gray-300 text-sm">{item.event}</p>}
-                        </div>
+
+                        {/* Center variant — original style */}
+                        {textVariant === "center" && (
+                            <div className="absolute -bottom-2 left-0 w-full p-6 text-center transform transition-transform duration-500 group-hover:translate-y-0">
+                                <h3 className="text-white text-xl font-[300] mb-1">{item.title}</h3>
+                                {item.event && <p className="text-gray-300 text-sm">{item.event}</p>}
+                            </div>
+                        )}
+
+                        {/* Left variant — big title top-left, small subtitle bottom-left */}
+                        {textVariant === "left" && (
+                            <>
+                                <div className="absolute bottom-6 left-0 w-full p-3">
+                                    <h3 className="text-white text-3xl font-[500] leading-tight">{item.title}</h3>
+                                </div>
+                                {item.event && (
+                                    <div className="absolute bottom-0 left-0 w-full p-4">
+                                        <p className="text-gray-300 text-sm font-[300]">{item.event}</p>
+                                    </div>
+                                )}
+                            </>
+                        )}
                     </div>
                 ))}
             </div>
         </div>
     );
 };
+
 export default Marquee;

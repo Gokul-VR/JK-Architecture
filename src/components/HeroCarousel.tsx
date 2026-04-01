@@ -66,7 +66,7 @@ const HeroCarousel = ({ carouselImages }: { carouselImages?: string[] }) => {
               <button
                 key={index}
                 onClick={() => api?.scrollTo(index)}
-                className={`w-5 h-5 rounded-full transition-all duration-300 ${index === current
+                className={`w-4 h-4 rounded-full transition-all duration-300 ${index === current
                   ? "bg-[#ff4d00]" // Using the orange color from the design
                   : "bg-gray-primary hover:bg-gray-primary"
                   }`}

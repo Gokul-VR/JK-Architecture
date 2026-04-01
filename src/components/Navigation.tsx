@@ -79,7 +79,7 @@ const Navigation = () => {
             to="/"
             className="text-primary text-3xl font-bold italic cursor-pointer hover:opacity-80 transition-opacity"
           >
-            <img src={Logo} alt="nav-logo" className="w-10 h-10" />
+            <img src={Logo} alt="nav-logo" className="w-12 h-12" />
           </Link>
 
           {/* Desktop Navigation Links */}
@@ -88,7 +88,7 @@ const Navigation = () => {
               <Link
                 key={link.path}
                 to={link.path}
-                className={`text-sm font-[500] transition-colors ${location.pathname === link.path
+                className={`text-sm font-[400] transition-colors ${location.pathname === link.path
                   ? "text-primary"
                   : "text-foreground hover:text-primary"
                   }`}
