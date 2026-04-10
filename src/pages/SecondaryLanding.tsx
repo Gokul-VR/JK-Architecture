@@ -81,30 +81,24 @@ const SecondaryLanding = () => {
       <section className="flex-grow flex items-center justify-center relative w-full px-4">
         {/* Container for WE + Statements */}
         <div className="flex items-center gap-4 md:gap-16 relative">
-
           {/* Static "WE" - Scaled for mobile */}
-          <span className="text-2xl sm:text-4xl md:text-6xl font-medium tracking-tight z-20 shrink-0">
+          <span className="text-2xl sm:text-4xl md:text-[3rem] font-medium tracking-tight z-20 shrink-0">
             WE
           </span>
 
-          {/* Statement Area */}
           <div className="relative h-[80px] md:h-[120px] flex items-center min-w-[200px] md:min-w-[400px]">
-
-            {/* THE FIXED ORANGE PILL 
-                Left offset is dynamic to keep text centered inside it */}
             <div
-              className="absolute left-[-10px] md:left-[-40px] top-1/2 -translate-y-1/2 h-[55px] md:h-[80px] bg-[#E86731] rounded-full transition-all duration-500 ease-out z-0"
+              className="absolute left-[-10px] md:left-[-40px] top-[52%] -translate-y-1/2 h-[55px] md:h-[70px] bg-[#E86731] rounded-full transition-all duration-500 ease-out z-0"
               style={{ width: `${pillWidth}px` }}
             />
 
-            {/* Scrolling List Container */}
             <div className="relative w-full h-full">
               {statements.map((statement, index) => {
                 const distance = index - activeIndex;
                 const isActive = distance === 0;
 
                 // Responsive vertical gap: 60px mobile, 90px desktop
-                const verticalGap = window.innerWidth < 768 ? 60 : 90;
+                const verticalGap = window.innerWidth < 768 ? 60 : 78;
                 const offset = distance * verticalGap;
                 const opacity = Math.max(0.1, 1 - Math.abs(distance) * 0.4);
 
@@ -123,8 +117,9 @@ const SecondaryLanding = () => {
                   >
                     <span
                       ref={isActive ? activeRef : null}
-                      className={`text-xl sm:text-3xl md:text-5xl font-medium tracking-wide block transition-colors duration-300 ${isActive ? "text-white" : "text-[#a1a1a1]"
-                        }`}
+                      className={`text-xl sm:text-3xl md:text-[3.3rem] font-medium tracking-wide block transition-colors duration-300 ${
+                        isActive ? "text-white" : "text-[#dbdada]"
+                      }`}
                     >
                       {statement.text}
                     </span>
@@ -136,11 +131,11 @@ const SecondaryLanding = () => {
         </div>
 
         {/* Footer Text - Responsive sizing */}
-        <div className="absolute bottom-6 md:bottom-4 left-0 right-0 text-center px-4">
+        {/* <div className="absolute bottom-6 md:bottom-4 left-0 right-0 text-center px-4">
           <p className="font-poppins text-[14px] sm:text-[24px] md:text-[34px] tracking-[0.05em] text-white font-light">
             Jibu and Thomas Architects
           </p>
-        </div>
+        </div> */}
       </section>
     </div>
   );

@@ -8,6 +8,7 @@ import Media1 from "@/assets/media-1.png";
 import Marquee from "@/components/Marquee";
 import { useState } from "react";
 import ItemModal, { ItemData } from "@/components/ItemModal";
+import CircleIndicator from "@/components/indicators/circleIndicator";
 
 const publications = [
   { id: 1, image: Media1, name: "Publication Name", year: "YEAR" },
@@ -19,23 +20,52 @@ const publications = [
 ];
 
 const carouselPublications = [
-  { id: 1, image: project1, title: "Publication Name", label: "JT TITLE + ARCHITECTS" },
-  { id: 2, image: project2, title: "Publication Name", label: "JT TITLE + ARCHITECTS" },
-  { id: 3, image: project3, title: "Publication Name", label: "JT TITLE + ARCHITECTS" },
-  { id: 4, image: project1, title: "Publication Name", label: "JT TITLE + ARCHITECTS" },
-  { id: 5, image: project2, title: "Publication Name", label: "JT TITLE + ARCHITECTS" },
+  {
+    id: 1,
+    image: project1,
+    title: "Publication Name",
+    label: "JT TITLE + ARCHITECTS",
+  },
+  {
+    id: 2,
+    image: project2,
+    title: "Publication Name",
+    label: "JT TITLE + ARCHITECTS",
+  },
+  {
+    id: 3,
+    image: project3,
+    title: "Publication Name",
+    label: "JT TITLE + ARCHITECTS",
+  },
+  {
+    id: 4,
+    image: project1,
+    title: "Publication Name",
+    label: "JT TITLE + ARCHITECTS",
+  },
+  {
+    id: 5,
+    image: project2,
+    title: "Publication Name",
+    label: "JT TITLE + ARCHITECTS",
+  },
 ];
 
 const DotPattern = () => (
   <div className="flex flex-wrap gap-1 max-w-full overflow-hidden">
     {Array.from({ length: 300 }).map((_, i) => (
-      <div key={i} className="w-1.5 h-1.5 bg-muted-foreground/30 rounded-full" />
+      <div
+        key={i}
+        className="w-1.5 h-1.5 bg-muted-foreground/30 rounded-full"
+      />
     ))}
   </div>
 );
 
 const Media = () => {
-  const [selectedPublication, setSelectedPublication] = useState<ItemData | null>(null);
+  const [selectedPublication, setSelectedPublication] =
+    useState<ItemData | null>(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const handleOpenModal = (pubData: ItemData) => {
@@ -54,11 +84,13 @@ const Media = () => {
             {publications.map((pub, index) => (
               <div
                 key={pub.id}
-                onClick={() => handleOpenModal({
-                  image: pub.image,
-                  title: pub.name,
-                  date: pub.year
-                })}
+                onClick={() =>
+                  handleOpenModal({
+                    image: pub.image,
+                    title: pub.name,
+                    date: pub.year,
+                  })
+                }
                 className="group cursor-pointer animate-fade-in"
                 style={{ animationDelay: `${index * 50}ms` }}
               >
@@ -69,8 +101,12 @@ const Media = () => {
                     className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
                   />
                 </div>
-                <h3 className="text-foreground text-[1rem] md:text-[1.65rem] font-medium -mb-1.5">{pub.name}</h3>
-                <p className="text-muted-foreground text-[.875rem] md:text-[1.25rem]">{pub.year}</p>
+                <h3 className="text-foreground text-[1rem] md:text-[1.65rem] font-medium -mb-1.5">
+                  {pub.name}
+                </h3>
+                <p className="text-muted-foreground text-[.875rem] md:text-[1.25rem]">
+                  {pub.year}
+                </p>
               </div>
             ))}
           </div>
@@ -81,9 +117,16 @@ const Media = () => {
           </div>
 
           {/* Empty space for minimal design */}
-
         </div>
-        <div className="flex justify-center mb-4 md:py-21">
+        <div className="px-6 md:px-6">
+          <CircleIndicator
+            filledIndices={[30, 34]}
+            circleSize={32}
+            gap={8}
+            containerClassName="w-full flex justify-center items-center"
+          />
+        </div>
+        {/* <div className="flex justify-center mb-4 md:py-21">
           <div className="grid grid-cols-39 gap-[2px] md:gap-2 w-full max-w-[88.5rem]">
             {Array.from({ length: 117 }).map((_, i) => {
               const row = Math.floor(i / 39);
@@ -108,7 +151,7 @@ const Media = () => {
               );
             })}
           </div>
-        </div>
+        </div> */}
       </section>
 
       <ContactSection />

@@ -46,9 +46,10 @@ const Reviews = () => {
               Client Portfolio
             </h1>
             <p className="text-PoppinsDescription max-w-4xl font-[300] mx-auto text-justify">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-              incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
-              exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+              eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
+              enim ad minim veniam, quis nostrud exercitation ullamco laboris
+              nisi ut aliquip ex ea commodo consequat
             </p>
           </div>
 
@@ -62,25 +63,25 @@ const Reviews = () => {
             }
 
             return (
-              <div className="flex flex-col gap-10 mb-8 animate-fade-in items-center" style={{ animationDelay: "100ms" }}>
+              <div
+                className="flex flex-col gap-10 mb-8 animate-fade-in items-center"
+                style={{ animationDelay: "100ms" }}
+              >
                 {rows.map((row, rowIndex) => (
                   <div key={rowIndex} className="flex justify-center gap-10">
                     {row.map((_, index) => (
                       <div
                         key={index}
                         className="w-[200px] aspect-[4/4] bg-card border border-border flex items-center justify-center flex-shrink-0"
-                      >
-                      </div>
+                      ></div>
                     ))}
                   </div>
                 ))}
               </div>
             );
           })()}
-
-
         </div>
-        <div className="flex justify-center my-20">
+        {/* <div className="flex justify-center my-20">
           <div className="grid grid-cols-39 gap-[2px] md:gap-2 w-full max-w-[90.5rem]">
             {Array.from({ length: 117 }).map((_, i) => {
               const row = Math.floor(i / 39);
@@ -105,17 +106,28 @@ const Reviews = () => {
               );
             })}
           </div>
+        </div> */}
+        <div className="px-6 md:px-6 py-10 mb-5">
+          <CircleIndicator
+            filledIndices={[32, 34]}
+            circleSize={32}
+            gap={8}
+            containerClassName="w-full flex justify-center items-center"
+          />
         </div>
-
         {/* Testament of Trust Section */}
-        <div className="mb-20 animate-fade-in" style={{ animationDelay: "200ms" }}>
+        <div
+          className="mb-20 animate-fade-in"
+          style={{ animationDelay: "200ms" }}
+        >
           <h2 className="text-foreground text-3xl md:text-InterHeader font-bold text-center mb-8">
             Testament of Trust
           </h2>
           <p className="text-PoppinsDescription font-[300] text-justify max-w-4xl mx-auto mb-12">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-            incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
-            exercitation ullamco laboris nisi ut aliquip.
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
+            ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+            aliquip.
           </p>
 
           {/* Testimonials */}
@@ -134,8 +146,12 @@ const Reviews = () => {
                     </p>
                   </div>
                   <div className="text-right mt-10">
-                    <p className="font-poppins lg:text-[1.6rem] font-[300]">{testimonial.company}</p>
-                    <p className="text-white font-poppins font-semibold text-2xl lg:text-PoppinsHeader mt-1">{testimonial.name}</p>
+                    <p className="font-poppins lg:text-[1.6rem] font-[300]">
+                      {testimonial.company}
+                    </p>
+                    <p className="text-white font-poppins font-semibold text-2xl lg:text-PoppinsHeader mt-1">
+                      {testimonial.name}
+                    </p>
                   </div>
                 </div>
 
@@ -150,7 +166,10 @@ const Reviews = () => {
                     {/* Bottom gradient fade */}
                     <div
                       className="absolute inset-x-0 bottom-0 h-1/2 pointer-events-none"
-                      style={{ background: 'linear-gradient(180deg, rgba(217, 217, 217, 0) 8.49%, #000000 100%)' }}
+                      style={{
+                        background:
+                          "linear-gradient(180deg, rgba(217, 217, 217, 0) 8.49%, #000000 100%)",
+                      }}
                     />
                   </div>
                 </div>

@@ -22,6 +22,14 @@ const About = () => {
     if (!textRef.current || !headingRef.current) return;
 
     const split = new SplitText(textRef.current, { type: "lines" });
+    
+    // Fix justification broken by line splits
+    split.lines.forEach((line, index) => {
+      if (index < split.lines.length - 1) {
+        (line as HTMLElement).style.textAlignLast = "justify";
+      }
+    });
+
     const splitHeading = new SplitText(headingRef.current, { type: "words,chars" });
 
     const tl = gsap.timeline();
