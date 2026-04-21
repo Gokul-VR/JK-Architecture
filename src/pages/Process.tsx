@@ -152,10 +152,10 @@ const Process = () => {
                 <div className="absolute bottom-0 left-1/2 -translate-x-1/2 bg-orange-primary z-20 expand-overlay" />
 
                 {/* Content Overlay - Description Only */}
-                <div className="absolute inset-0 z-30 p-4 md:p-6 pointer-events-none overflow-hidden flex justify-center items-center">
-                  <div className="hover-content desc-slide w-full h-full flex justify-center items-center">
+                <div className="absolute inset-0 z-30 p-3 md:p-6 pointer-events-none overflow-hidden">
+                  <div className="hover-content desc-slide w-full h-full">
                     <p
-                      className="text-white text-[14px] md:text-[14px] font-poppins font-[300] leading-[1.6] md:leading-[1.3] h-full flex items-center justify-center text-justify"
+                      className="text-white text-[14px] md:text-[15.5px] font-poppins font-[300] leading-[1.6] md:leading-[1.7] h-full w-full text-justify"
                       style={{
                         writingMode: "vertical-rl",
                         transform: "rotate(180deg)",

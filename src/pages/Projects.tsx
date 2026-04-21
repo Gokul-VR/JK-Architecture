@@ -1,5 +1,5 @@
-import { Link, useNavigate } from "react-router-dom";
-import { useState } from "react";
+import { Link, useNavigate, useLocation } from "react-router-dom";
+import { useState, useEffect } from "react";
 import Navigation from "@/components/Navigation";
 import ContactSection from "@/components/ContactSection";
 import SeeAllModal from "@/components/SeeAllModal";
@@ -330,8 +330,23 @@ export type ProjectCategory = {
 
 const Projects = () => {
   const navigate = useNavigate();
+  const location = useLocation();
   const [selectedCategory, setSelectedCategory] =
     useState<ProjectCategory | null>(null);
+
+  useEffect(() => {
+    if (location.hash) {
+      const id = location.hash.replace("#", "");
+      const element = document.getElementById(id);
+      if (element) {
+        setTimeout(() => {
+          element.scrollIntoView({ behavior: "smooth", block: "start" });
+        }, 100);
+      }
+    } else {
+      window.scrollTo(0, 0);
+    }
+  }, [location.hash, location.pathname]);
 
   return (
     <div className="min-h-screen bg-background">
@@ -341,11 +356,11 @@ const Projects = () => {
       {/* Project Categories */}
       <div className="">
         {projectCategories.map((category, index) => (
-          <>
-            {category?.carouselImages?.length > 0 && (
+          <section key={category.id} id={category.id} className="scroll-mt-24">
+            {category?.carouselImages && category.carouselImages.length > 0 && (
               <HeroCarousel carouselImages={category.carouselImages} />
             )}
-            <div key={category.id} className="mb-24 container mx-auto mt-20">
+            <div className="mb-24 container mx-auto mt-20">
               {/* Header Section */}
               <div className="mb-12 flex flex-col items-center">
                 <h2 className="text-3xl md:text-InterHeader font-[700] mb-6">
@@ -440,7 +455,7 @@ const Projects = () => {
                 />
               </div>
             )}
-          </>
+          </section>
         ))}
       </div>
 
